@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>상품목록</title>
+</head>
+<body>
+<h2>상품목록</h2>
+<table>
+  <tr>
+    <th style="text-align: left">아이디</th>
+    <th style="text-align: left">상품명</th>
+  </tr>
+  <tr th:each="item: ${items}">
+    <td th:text="${item.id}"></td>
+    <td th:text="${item.name}"></td>
+  </tr>
+</table>
+</body>
+</html>
