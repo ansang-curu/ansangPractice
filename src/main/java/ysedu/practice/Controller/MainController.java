@@ -31,8 +31,13 @@ public class MainController {
 //    한개 조회 상세페이지
     @GetMapping("/{id}")
     public String selectFruit(@PathVariable("id")int id, Model model){
+        try{
         FruitDto fruitDto= mainService.selectItemById(id);
         model.addAttribute("fruit",fruitDto);
+        }catch (IllegalStateException e){
+            model.addAttribute("message",e.getMessage());
+            return "errorId";
+        }
         return "detail";
     }
 // 상품 목록

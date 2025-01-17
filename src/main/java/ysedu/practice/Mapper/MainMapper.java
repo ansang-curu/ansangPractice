@@ -4,11 +4,12 @@ import org.apache.ibatis.annotations.Mapper;
 import ysedu.practice.Dto.FruitDto;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface MainMapper {
     public void insertItem(FruitDto fruitDto);
-    FruitDto selectItemById(int id);
+    Optional<FruitDto> selectItemById(int id);
     List<FruitDto> selectItems();
 
 }
