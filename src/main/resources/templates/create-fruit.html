@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.or">
+<head>
+    <meta charset="UTF-8">
+    <title>과일생성</title>
+</head>
+<body>
+<h1>새 아이템 생성</h1>
+<form id="fruitForm" th:action="@{/fruits}" method="post" >
+    <label for="fruit_id">아이템(과일): </label>
+    <input type="text" id="fruit_id" name="name" required>
+    <button type="submit">등록하기</button>
+
+</form>
+<script th:src="@{/js/items.js}"></script>
+
+</body>
+</html>
