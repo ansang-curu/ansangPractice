@@ -12,4 +12,13 @@ insert into items(name) values(#{name});
     <select id="selectItems" resultType="ysedu.practice.Dto.FruitDto">
         select * from items order by id;
     </select>
+
+    <delete id="deleteItem">
+        delete from items where id=#{id}
+    </delete>
+
+    <update id="updateItem" parameterType="ysedu.practice.Dto.FruitDto">
+        update items set name = #{name} where id = #{id};
+    </update>
+
 </mapper>

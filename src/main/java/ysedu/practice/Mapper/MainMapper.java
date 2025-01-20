@@ -11,5 +11,7 @@ public interface MainMapper {
     public void insertItem(FruitDto fruitDto);
     Optional<FruitDto> selectItemById(int id);
     List<FruitDto> selectItems();
+    void deleteItem(int id);
+    void updateItem(FruitDto fruitDto);
 
 }

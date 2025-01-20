@@ -23,4 +23,13 @@ public class MainService {
     public List<FruitDto> selectItems(){
         return mainMapper.selectItems();
     }
+//    삭제 기능
+    public void deleteItem(int id){
+         mainMapper.deleteItem(id);
+    }
+//    수정 기능
+    public void updateItem(FruitDto fruitDto){
+        mainMapper.updateItem(fruitDto);
+    }
+
 }

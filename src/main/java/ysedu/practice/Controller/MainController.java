@@ -47,6 +47,22 @@ public class MainController {
         model.addAttribute("items",items);
         return "itemsList";
     }
+// 삭제 기능
+    @GetMapping("/{id}/delete")
+    public String deleteItem(@PathVariable("id") int id){
+        mainService.deleteItem(id);
+        System.out.println("삭제완료");
 
+        return  "redirect:/fruits";
+    }
+//    수정 기능
+    @GetMapping("/{id}/update")
+
+    public String updateItem(@PathVariable("id") int id,Model model){
+        FruitDto fruitDto=mainService.selectItemById(id);
+        model.addAttribute("fruit",fruitDto);
+
+        return "modify";
+    }
 
 }
