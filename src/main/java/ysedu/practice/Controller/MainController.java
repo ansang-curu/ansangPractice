@@ -62,7 +62,11 @@ public class MainController {
         FruitDto fruitDto=mainService.selectItemById(id);
         model.addAttribute("fruit",fruitDto);
 
-        return "modify";
+        return "update";
     }
-
+    @PostMapping("/{id}/update")
+    public  void updateItem(@RequestBody FruitDto fruitDto){
+        System.out.println(fruitDto.getName());
+        mainService.updateItem(fruitDto);
+    }
 }
