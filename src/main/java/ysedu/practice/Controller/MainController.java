@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ysedu.practice.Dto.FruitDto;
+import ysedu.practice.Dto.PageDto;
 import ysedu.practice.Service.MainService;
 
 import java.util.List;
@@ -43,9 +44,11 @@ public class MainController {
 // 상품 목록
 //    요청url형식 : /fruits?page=1&limit=10
     @GetMapping
-    public String selectItems(@RequestParam(name = "page",defaultValue = "1")int page,@RequestParam(name = "limit",defaultValue = "3")int limit,Model model){
-        List<FruitDto> items = mainService.selectItems(page,limit);
-        model.addAttribute("items",items);
+    public String selectItems(@RequestParam(name = "page",defaultValue = "1")int page,
+                              @RequestParam(name = "limit",defaultValue = "3")int limit,
+                              Model model){
+        PageDto pageDto= mainService.selectItems(page,limit);
+        model.addAttribute("pageDto",pageDto);
         return "itemsList";
     }
 // 삭제 기능

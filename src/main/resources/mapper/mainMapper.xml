@@ -22,4 +22,8 @@ insert into items(name) values(#{name});
         update items set name = #{name} where id = #{id};
     </update>
 
+    <select id="countTotal" resultType="Integer">
+        select count(*) from items;
+    </select>
+
 </mapper>

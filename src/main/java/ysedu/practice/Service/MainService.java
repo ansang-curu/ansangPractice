@@ -3,6 +3,7 @@ package ysedu.practice.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ysedu.practice.Dto.FruitDto;
+import ysedu.practice.Dto.PageDto;
 import ysedu.practice.Mapper.MainMapper;
 
 import java.util.List;
@@ -20,10 +21,13 @@ public class MainService {
         return mainMapper.selectItemById(id).orElseThrow(()->new IllegalStateException(String.format("id %d번은 없습니다.",id)));
     }
 //    전체 조회 목록
-    public List<FruitDto> selectItems(int page,int limit) {
+    public PageDto selectItems(int page,int limit) {
         int offset=(page-1)*limit;
         List<FruitDto> fruits=mainMapper.selectItems(limit,offset);
-        return fruits;
+        int totalElements = mainMapper.countTotal();
+        int totalPages= (int) Math.ceil((double) totalElements/limit);
+        PageDto pageDto = new PageDto(page,limit,totalPages,totalElements,fruits);
+        return pageDto;
     }
 //    삭제 기능
     public void deleteItem(int id){

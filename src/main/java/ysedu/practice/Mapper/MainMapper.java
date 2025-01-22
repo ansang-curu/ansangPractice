@@ -14,5 +14,5 @@ public interface MainMapper {
     List<FruitDto> selectItems(@Param("limit") int limit, @Param("offset") int offset);
     void deleteItem(int id);
     void updateItem(FruitDto fruitDto);
-
+    int countTotal();
 }

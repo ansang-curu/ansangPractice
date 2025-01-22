@@ -15,11 +15,27 @@
     <th style="text-align: left">아이디</th>
     <th style="text-align: left">상품명</th>
   </tr>
-  <tr th:each="item: ${items}">
-    <td th:text="${item.id}"></td>
-      <td><a th:href="@{/fruits/{id}(id=${item.id})}" th:text="${item.name}"></a></td>
+  <tr th:each="fruit: ${pageDto.fruits}">
+    <td th:text="${fruit.id}"></td>
+      <td><a th:href="@{/fruits/{id}(id=${fruit.id})}" th:text="${fruit.name}"></a></td>
   </tr>
 </table>
+    <div>
+        <ul>
+            <li th:each="pageNum:${#numbers.sequence(1,pageDto.totalPages)}">
+                <a th:href="@{/fruits(page=${pageNum}, limit=${pageDto.limit})}" th:text="${pageNum}"></a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li th:text="|page:  + ${pageDto.page}|"></li>
+            <li th:text="|limit:  + ${pageDto.limit}|"></li>
+            <li th:text="|totalPages:  + ${pageDto.totalPages}|"></li>
+            <li th:text="|totalElements:  + ${pageDto.totalElements}|"></li>
+        </ul>
+    </div>
+
 </main>
 </body>
 </html>
