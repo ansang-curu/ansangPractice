@@ -10,7 +10,8 @@ insert into items(name) values(#{name});
     </select>
 
     <select id="selectItems" resultType="ysedu.practice.Dto.FruitDto">
-        select * from items order by id;
+<!--        select * from items order by id;-->
+        select id, name from items order by id limit #{limit} offset #{offset}
     </select>
 
     <delete id="deleteItem">

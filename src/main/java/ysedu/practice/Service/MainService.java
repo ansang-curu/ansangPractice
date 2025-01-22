@@ -20,8 +20,10 @@ public class MainService {
         return mainMapper.selectItemById(id).orElseThrow(()->new IllegalStateException(String.format("id %d번은 없습니다.",id)));
     }
 //    전체 조회 목록
-    public List<FruitDto> selectItems(){
-        return mainMapper.selectItems();
+    public List<FruitDto> selectItems(int page,int limit) {
+        int offset=(page-1)*limit;
+        List<FruitDto> fruits=mainMapper.selectItems(limit,offset);
+        return fruits;
     }
 //    삭제 기능
     public void deleteItem(int id){

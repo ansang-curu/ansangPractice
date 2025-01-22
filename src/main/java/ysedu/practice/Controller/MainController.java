@@ -41,9 +41,10 @@ public class MainController {
         return "detail";
     }
 // 상품 목록
+//    요청url형식 : /fruits?page=1&limit=10
     @GetMapping
-    public String selectItems(Model model){
-        List<FruitDto> items = mainService.selectItems();
+    public String selectItems(@RequestParam(name = "page",defaultValue = "1")int page,@RequestParam(name = "limit",defaultValue = "3")int limit,Model model){
+        List<FruitDto> items = mainService.selectItems(page,limit);
         model.addAttribute("items",items);
         return "itemsList";
     }
@@ -59,12 +60,17 @@ public class MainController {
     @GetMapping("/{id}/update")
 
     public String updateItem(@PathVariable("id") int id,Model model){
-        FruitDto fruitDto=mainService.selectItemById(id);
-        model.addAttribute("fruit",fruitDto);
-
+        try {
+            FruitDto fruitDto = mainService.selectItemById(id);
+            model.addAttribute("fruit", fruitDto);
+        }catch (IllegalStateException e){
+            model.addAttribute("message",e.getMessage());
+            return "errorId";
+        }
         return "update";
     }
     @PostMapping("/{id}/update")
+    @ResponseBody
     public  void updateItem(@RequestBody FruitDto fruitDto){
         System.out.println(fruitDto.getName());
         mainService.updateItem(fruitDto);
