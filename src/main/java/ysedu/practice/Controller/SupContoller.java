@@ -14,6 +14,10 @@ public class SupContoller {
     @Autowired
     SupService supService;
 
+    @GetMapping("/create")
+    public String create(){
+        return  "/sup/create-sup";
+    }
     //    삽입 기능 구현
     @PostMapping
     @ResponseBody

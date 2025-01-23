@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ysedu.practice.Mapper.SupMapper">
     <insert id="insertSup" parameterType="ysedu.practice.Dto.SupDto">
-        insert into sups(name) values(#{name});
+        insert into sups(name,contact1,contact2,business_number) values(#{name},#{contact1},#{contact2},#{businessNumber});
     </insert>
 
     <select id="selectSupById" resultType="ysedu.practice.Dto.SupDto">
