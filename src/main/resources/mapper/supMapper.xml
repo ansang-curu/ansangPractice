@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ysedu.practice.Mapper.SupMapper">
+    <insert id="insertSup" parameterType="ysedu.practice.Dto.SupDto">
+        insert into sups(name) values(#{name});
+    </insert>
+
+    <select id="selectSupById" resultType="ysedu.practice.Dto.SupDto">
+        select * from sups where id = #{id}
+    </select>
+
+    <select id="selectSups" resultType="ysedu.practice.Dto.SupDto">
+        <!--        select * from items order by id;-->
+        select id, name from sups order by id limit #{limit} offset #{offset}
+    </select>
+
+    <delete id="deleteSup">
+        delete from sups where id=#{id}
+    </delete>
+
+    <update id="updateSup" parameterType="ysedu.practice.Dto.SupDto">
+        update sups set name = #{name} where id = #{id};
+    </update>
+
+    <select id="countTotal" resultType="Integer">
+        select count(*) from sups;
+    </select>
+
+</mapper>

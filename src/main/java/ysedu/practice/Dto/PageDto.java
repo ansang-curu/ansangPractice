@@ -11,12 +11,23 @@ import java.util.List;
 @Getter
 @Builder
 @AllArgsConstructor
-public class PageDto {
+public class PageDto<T> {
     private int page;
     private int limit;
     private int totalPages;
     private int totalElements;
-    private List<FruitDto> fruits;
+    private List<T> content;
+//    private List<SupDto> sups;
+
+    public PageDto(int page, int limit, int totalElements, List<T> content) {
+        this.page = page;
+        this.limit = limit;
+        this.totalPages = (int) Math.ceil((double) totalElements / limit);
+        this.totalElements = totalElements;
+        this.content = content;
+    }
+
+
 
     public int getPage() {
         return page;
@@ -50,13 +61,13 @@ public class PageDto {
         this.totalElements = totalElements;
     }
 
-    public List<FruitDto> getFruits() {
-        return fruits;
+    public List<T> getFruits() {
+        return content;
     }
 
-    public void setFruits(List<FruitDto> fruits) {
-        this.fruits = fruits;
-    }
+//    public void setFruits(List<FruitDto> fruits) {
+//        this.fruits = fruits;
+//    }
 
 
 
