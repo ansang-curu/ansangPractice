@@ -22,7 +22,7 @@ public class SupService {
         return supMapper.selectSupById(id).orElseThrow(()->new IllegalStateException(String.format("id %d번은 없습니다.",id)));
     }
     //    전체 조회 목록
-    public PageDto<SupDto> selectsups(int page, int limit) {
+    public PageDto<SupDto> selectSups(int page, int limit) {
         int offset=(page-1)*limit;
         List<SupDto> sups =supMapper.selectSups(limit,offset);
         int totalElements = supMapper.countTotal();

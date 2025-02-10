@@ -30,22 +30,22 @@ public class SupContoller {
     public String selectSup(@PathVariable("id")int id, Model model){
         try{
             SupDto supDto= supService.selectSupById(id);
-            model.addAttribute("fruit",supDto);
+            model.addAttribute("sup",supDto);
         }catch (IllegalStateException e){
             model.addAttribute("message",e.getMessage());
             return "errorId";
         }
-        return "detail";
+        return "supDetail";
     }
     // 상품 목록
-//    요청url형식 : /fruits?page=1&limit=10
+//    요청url형식 : /sups?page=1&limit=10
     @GetMapping
     public String selectSups(@RequestParam(name = "page",defaultValue = "1")int page,
                               @RequestParam(name = "limit",defaultValue = "3")int limit,
                               Model model){
-        PageDto pageDto= supService.selectsups(page,limit);
+        PageDto pageDto= supService.selectSups(page,limit);
         model.addAttribute("pageDto",pageDto);
-        return "itemsList";
+        return "/sup/supsList";
     }
     // 삭제 기능
     @GetMapping("/{id}/delete")
@@ -53,7 +53,7 @@ public class SupContoller {
         supService.deleteSup(id);
         System.out.println("삭제완료");
 
-        return  "redirect:/fruits";
+        return  "redirect:/sups";
     }
     //    수정 기능
     @GetMapping("/{id}/update")

@@ -11,7 +11,7 @@
 
     <select id="selectSups" resultType="ysedu.practice.Dto.SupDto">
         <!--        select * from items order by id;-->
-        select id, name from sups order by id limit #{limit} offset #{offset}
+        select id, name, contact1, contact2, business_number from sups order by id limit #{limit} offset #{offset}
     </select>
 
     <delete id="deleteSup">

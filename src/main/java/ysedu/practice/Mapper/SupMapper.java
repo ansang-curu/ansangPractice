@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 @Mapper
 public interface SupMapper {
-    public void insertSup(SupDto supDto);
+    void insertSup(SupDto supDto);
     Optional<SupDto> selectSupById(int id);
     List<SupDto> selectSups(@Param("limit") int limit, @Param("offset") int offset);
     void deleteSup(int id);

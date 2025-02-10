@@ -8,16 +8,22 @@
 <body>
 <main layout:fragment="content">
     <h1>수정하기</h1>
-    <form id="fruitForm">
-        <input type="hidden" id="fruit_id" name="id" th:value="${fruit.id}">
-        <label for="fruit_name">아이템(과일): </label>
-        <input type="text" id="fruit_name" name="fruit" th:value="${fruit.name}">
+    <form id="supForm">
+        <input type="hidden" id="sup_id" name="id" th:value="${sup.id}">
+        <label for="sup_name">아이템(공급처): </label>
+        <input type="text" id="sup_name" name="sup" th:value="${sup.name}">
+        <label for="sup_contact1">아이템(연락처1): </label>
+        <input type="text" id="sup_contact1" name="sup" th:value="${sup.contact1}">
+        <label for="sup_contact2">아이템(연락처2): </label>
+        <input type="text" id="sup_contact2" name="sup" th:value="${sup.contact2}">
+        <label for="sup_businessNumber">아이템(사업자번호): </label>
+        <input type="text" id="sup_businessNumber" name="sup" th:value="${sup.businessNumber}">
 <!--위의 아이템 부분이 dto의 name으로 들어가는건데 item으로 적혀있음. 밸류도 아이템으로 들고오는지 컨트롤러쪽에서 확인해야함 model로 넘겨올때-->
         <button type="submit">아이템 수정</button>
     </form>
 </main>
 <th:block layout:fragment="js">
-    <script th:src="@{/js/itemsUpdate.js}"></script>
+    <script th:src="@{/js/supsUpdate.js}"></script>
 </th:block>
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>공급처목록</title>
+</head>
+<body>
+<main layout:fragment="content">
+
+
+    <h2>공급처목록</h2>
+    <p th:text="${pageDto}"></p>
+    <p>---------------------------------</p>
+    <p th:each="sup : ${pageDto.content}">텍스트
+    <span th:text="${sup.id}"></span>
+    <span th:text="${sup.name}"></span>
+    </p>
+
+    <h1>--------------------------</h1>
+    <p th:text="${pageDto.content[0]}"></p>
+
+
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th style="text-align: left">공급처 id</th>-->
+<!--            <th style="text-align: left">공급처 이름</th>-->
+<!--            <th style="text-align: left">공급처 번호1</th>-->
+<!--            <th style="text-align: left">공급처 번호2</th>-->
+<!--            <th style="text-align: left">공급처 사업자번호</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="sup : ${pageDto.content}">-->
+<!--            <td th:text="${sup.id}"></td>-->
+<!--            <td><a th:href="@{/sups/{id}(id=${sups.id})}" th:text="${sup.name}"></a></td>-->
+<!--            <td th:text="${sup.contact1}"></td>-->
+<!--            <td th:text="${sup.contact2}"></td>-->
+<!--            <td th:text="${sup.businessNumber}"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--    <div>-->
+<!--        <ul>-->
+<!--            <li th:each="pageNum : ${#numbers.sequence(1,pageDto.totalPages)}">-->
+<!--                <a th:href="@{/sups(page=${pageNum}, limit=${pageDto.limit})}" th:text="${pageNum}"></a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <ul>-->
+<!--            <li th:text="|page:  + ${pageDto.page}|"></li>-->
+<!--            <li th:text="|limit:  + ${pageDto.limit}|"></li>-->
+<!--            <li th:text="|totalPages:  + ${pageDto.totalPages}|"></li>-->
+<!--            <li th:text="|totalElements:  + ${pageDto.totalElements}|"></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+</main>
+</body>
+</html>
